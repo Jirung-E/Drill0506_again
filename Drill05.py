@@ -27,16 +27,21 @@ def handle_events():
 def reset_world():
     global running
     global cx, cy
-    global hx, hy
-    global sx, sy
     global frame
-    global t
     global action
 
     running = True
     cx, cy = TUK_WIDTH // 2, TUK_HEIGHT // 2
     frame = 0
     action = 3
+
+    set_new_target_arrow()
+
+
+def set_new_target_arrow():
+    global hx, hy
+    global sx, sy
+    global t
 
     sx, sy = cx, cy
     # hx, hy = TUK_WIDTH - 50, TUK_HEIGHT - 50
@@ -68,6 +73,9 @@ def update_world():
         cx = (1-t)*sx + t*hx
         cy = (1-t)*sy + t*hy
         t += 0.001
+    else:
+        cx, cy = hx, hy
+        set_new_target_arrow()
 
 
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
