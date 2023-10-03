@@ -94,6 +94,8 @@ def update_world():
             cx, cy = hx, hy
             del points[0]
             set_new_target_arrow()
+    elif points:
+        set_new_target_arrow()
 
 
 open_canvas(TUK_WIDTH, TUK_HEIGHT)
