@@ -1,5 +1,5 @@
 from pico2d import *
-import random
+
 
 TUK_WIDTH, TUK_HEIGHT = 1280, 1024
 
@@ -27,7 +27,6 @@ def handle_events():
             points.append((event.x, TUK_HEIGHT - 1 - event.y))
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
-    pass
 
 
 def reset_world():
@@ -107,6 +106,5 @@ while running:
     render_world()  # 월드의 현재 내용을 그린다.
     handle_events() # 사용자 입력을 받아들인다. 
     update_world()  # 월드 안의 객체들의 상호작용을 계산하고 그 내용을 업데이트한다.
-
 
 close_canvas()
