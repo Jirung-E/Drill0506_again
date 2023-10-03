@@ -26,28 +26,32 @@ def handle_events():
 
 def reset_world():
     global running
-    global cx, cy
     global frame
     global action
+    global cx, cy
 
     running = True
-    cx, cy = TUK_WIDTH // 2, TUK_HEIGHT // 2
     frame = 0
     action = 3
-
+    cx, cy = TUK_WIDTH // 2, TUK_HEIGHT // 2
     set_new_target_arrow()
 
 
 def set_new_target_arrow():
-    global hx, hy
     global sx, sy
+    global hx, hy
     global t
+    global action
+    global frame
 
     sx, sy = cx, cy
     # hx, hy = TUK_WIDTH - 50, TUK_HEIGHT - 50
     # hx, hy = 50, 50
     hx, hy = random.randint(0, TUK_WIDTH), random.randint(0, TUK_HEIGHT)
     t = 0.0
+    
+    action = 1 if cx < hx else 0
+    frame = 0
 
 
 def render_world():
@@ -62,12 +66,8 @@ def update_world():
     global frame
     global cx, cy
     global t
-    global action
 
     frame = (frame + 1) % 8
-    action = 1 if cx < hx else 0
-    if cx < hx:
-        action = 1
 
     if t <= 1.0:
         cx = (1-t)*sx + t*hx
