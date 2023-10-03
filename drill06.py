@@ -23,6 +23,8 @@ def handle_events():
             running = False
         elif event.type == SDL_MOUSEMOTION:
             mx, my = event.x, TUK_HEIGHT - 1 - event.y
+        elif event.type == SDL_MOUSEBUTTONDOWN and event.button == SDL_BUTTON_LEFT:
+            points.append((event.x, TUK_HEIGHT - 1 - event.y))
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             running = False
     pass
@@ -41,9 +43,7 @@ def reset_world():
     frame = 0
     action = 3
     cx, cy = TUK_WIDTH // 2, TUK_HEIGHT // 2
-
-    points = [(100, 900), (1200, 800), (500, 100)]
-
+    points = []
     set_new_target_arrow()
 
 
